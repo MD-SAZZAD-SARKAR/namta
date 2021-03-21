@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <link rel="stylesheet" href="styles/style.css"/>
+        <title>Namta</title>
+<style>*{
+    margin: 0;
+    padding: 0;
+    }
+body{
+    background: skyblue;
+}
+button{
+    padding: 10px;
+    width:25%;
+    border: none;
+    border-radius: 5px;
+    
+}
+textarea{
+    display: block;
+    width:100%;
+    overflow: scroll;
+    min-height: 400px;
+    background: #21213d;
+    color:aliceblue;
+    disabled: "";
+    }
+span{
+    color:red;
+    font-size: 20px;
+    }
+p,div{
+    background: skyblue;
+    margin: 5px;
+    }
+h3{
+    text-align: center;
+}input {
+    width:60px;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    
+}
+.on{
+    float: right;
+}
+.hide{
+    display: none;
+    }
+.val{
+    display: inline-block;
+    min-width:45%;
+    float: left;
+    }
+.val:last-child{
+  
+}
+div:after{
+    display: block;
+    content: "";
+    clear: both;
+    }
+.yellow{
+    color:yellow;
+}.green{
+    color:green;
+}</style>
+    </head>
+    <body>
+        <h3>This Namta tutrial</h3>
+         <p>1. Click and see <button onclick="two()">result</button><button class="on" id="print">print</button></p>
+      <div class="hide">
+      <input value="1"placeholder="please input first number"type="number" class="num">
+       <span>from</span>
+      <input value="10"placeholder="please input last number"type="number" class="num">
+      <button onclick="one()" class="on num">Go</button>
+      	<p class="val"></p>
+     		<p class="val"></p>
+      </div>
+     
+       
+       <script>
+
+'use strict'
+var result =document.querySelectorAll(".val");
+function one(){
+    
+
+    var inpu =document.querySelectorAll(".num");
+    	if(result[0].innerHTML !=="" || result[1].value !==""){
+  	 			result[0].innerHTML="";
+       result[1].innerHTML="";
+        
+    }
+    if(inpu[1].value=="" || inpu[1].value<=inpu[0].value){
+        inpu[1].value=inpu[0].value;
+    }else if((inpu[1].value-inpu[0].value)>=100){
+        inpu[1].value=parseFloat(inpu[0].value)+99;
+   
+    }
+//full loop run namta gor
+var run=inpu[1].value-inpu[0].value+1;
+for(var i=0; i<run; i++){
+     for(var count=1; count<11; count++){
+        var no=parseFloat(inpu[0].value)+i;
+     if(i<run/2){
+             result[0].innerHTML=result[0].innerHTML +`<span>${no}  × ${count} = ${no*count}</span> </br>`;
+            }else{
+              result[1].innerHTML=result[1].innerHTML +`<span>${no}  × ${count} = ${no*count}</span> </br>`;
+            }
+        }
+      if(i<run/2){
+    					result[0].innerHTML=result[0].innerHTML +`${no} namta end</br></br>`;
+        }else{
+            result[1].innerHTML=result[1].innerHTML +`${no} namta end</br></br>`;
+        }
+}
+    result[0].innerHTML=result[0].innerHTML +`<span class="yellow"> We are succ-</span></br></br>`;
+    result[1].innerHTML=result[1].innerHTML +`<span class="green">ess read namta</span></br></br>`;
+       
+}
+
+function two(){
+    document.querySelector(".hide").style.display ="block";
+
+}
+document.querySelector("#print").onclick=function(){
+			window.print()
+}
+</script>
+    </body>
+</html>
